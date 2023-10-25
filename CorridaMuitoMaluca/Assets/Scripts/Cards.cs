@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -11,28 +12,28 @@ public class Cards : MonoBehaviour
     public GameObject NevadoPrefab;
     public GameObject VulcaoPrefab;
 
-    public void SelecionaCarta(float x, float y){
-        float num = Random.value;
+    public void GeraCarta(float x, float y, int idx){
+        float num = UnityEngine.Random.value;
         Vector3 pos = new Vector3(x, y, 0f);
         if(num < 0.2){
-            Instantiate(FlorestaPrefab, pos, Quaternion.identity);
-            GameManager.playerCards.Add(FlorestaPrefab);
+            var card = Instantiate(FlorestaPrefab, pos, Quaternion.identity);
+            GameManager.playerCards.Add((idx, card));
         }
         else if(num < 0.4){
-            Instantiate(CidadePrefab, pos, Quaternion.identity);
-            GameManager.playerCards.Add(CidadePrefab);
+            var card = Instantiate(CidadePrefab, pos, Quaternion.identity);
+            GameManager.playerCards.Add((idx, card));
         }
         else if(num <0.6){
-            Instantiate(DesertoPrefab, pos, Quaternion.identity);
-            GameManager.playerCards.Add(DesertoPrefab);
+            var card = Instantiate(DesertoPrefab, pos, Quaternion.identity);
+            GameManager.playerCards.Add((idx, card));
         }
         else if(num < 0.8){
-            Instantiate(NevadoPrefab, pos, Quaternion.identity);
-            GameManager.playerCards.Add(NevadoPrefab);
+            var card = Instantiate(NevadoPrefab, pos, Quaternion.identity);
+            GameManager.playerCards.Add((idx, card));
         }
         else if(num <= 1){
-            Instantiate(VulcaoPrefab, pos, Quaternion.identity);
-            GameManager.playerCards.Add(VulcaoPrefab);
+            var card = Instantiate(VulcaoPrefab, pos, Quaternion.identity);
+            GameManager.playerCards.Add((idx, card));
         }
     }
 
@@ -43,9 +44,9 @@ public class Cards : MonoBehaviour
     void Awake()
     {
         if(GameManager.playerCards.Count == 0){
-            SelecionaCarta(-3.8f, -4.7f);
-            SelecionaCarta(-0.5f, -4.7f);
-            SelecionaCarta(2.8f, -4.7f);
+            GeraCarta(-3.8f, -4.7f, 1);
+            GeraCarta(-0.5f, -4.7f, 2);
+            GeraCarta(2.8f, -4.7f, 3);
         }
         else{
             float x = -3.8f;
@@ -54,7 +55,7 @@ public class Cards : MonoBehaviour
             foreach (var item in GameManager.playerCards)
             {
                 pos = new Vector3(x, y, 0f);
-                PosicionaCarta(item, pos);
+                PosicionaCarta(item.card, pos);
                 x += 3.3f;
             }
         }

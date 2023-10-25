@@ -20,4 +20,8 @@ public class Buttons : MonoBehaviour
     public void BackClick(){
         SceneManager.LoadScene("Inicio");
     }
+
+    public void SelecionaClick(){
+        GameManager.SelecionarCarta();
+    }
 }

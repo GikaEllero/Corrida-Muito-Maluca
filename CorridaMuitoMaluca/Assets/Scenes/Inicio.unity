@@ -644,7 +644,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1480065357}
         m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
-        m_MethodName: MapClick
+        m_MethodName: SelecionaClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -702,7 +702,7 @@ GameObject:
   m_Component:
   - component: {fileID: 615743409}
   - component: {fileID: 615743408}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
