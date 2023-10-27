@@ -24,4 +24,8 @@ public class Buttons : MonoBehaviour
     public void SelecionaClick(){
         GameManager.SelecionarCarta();
     }
+
+    public void TurnoClick(){
+        GameManager.FinalizarTurno();
+    }
 }

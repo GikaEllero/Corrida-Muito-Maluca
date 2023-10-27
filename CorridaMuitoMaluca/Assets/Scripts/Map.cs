@@ -4,80 +4,33 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
-    public GameObject FlorestaPrefab;
-    public GameObject CidadePrefab;
-    public GameObject DesertoPrefab;
-    public GameObject NevadoPrefab;
-    public GameObject VulcaoPrefab;
+    public static GameObject FlorestaPrefab = (GameObject)Resources.Load("Prefab/CardFloresta", typeof(GameObject));
+    public static GameObject CidadePrefab = (GameObject)Resources.Load("Prefab/CardCidade", typeof(GameObject));
+    public static GameObject DesertoPrefab = (GameObject)Resources.Load("Prefab/CardDeserto", typeof(GameObject));
+    public static GameObject NevadoPrefab = (GameObject)Resources.Load("Prefab/CardNevado", typeof(GameObject));
+    public static GameObject VulcaoPrefab = (GameObject)Resources.Load("Prefab/CardVulcao", typeof(GameObject));
 
-    public void IniciaMapa(){
-        int posX = 0;
-        int posY = 0;
-        for (int i = 0; i < 10; i++)
+    public static void IniciaMapa(){
+
+        for (int i = 0; i < 32; i++)
         {
-            GeraCartas(posX, posY);
-            posX += 1;
+            float num = Random.value;
+            if(num < 0.2){
+                GameManager.mapCards.Add(FlorestaPrefab);
+            }
+            else if(num < 0.4){
+                GameManager.mapCards.Add(CidadePrefab);
+            }
+            else if(num <0.6){
+                GameManager.mapCards.Add(DesertoPrefab);
+            }
+            else if(num < 0.8){
+                GameManager.mapCards.Add(NevadoPrefab);
+            }
+            else if(num <= 1){
+                GameManager.mapCards.Add(VulcaoPrefab);
+            }   
         }
-
-        posX = 9;
-        posY = 1;
-        for (int i = 0; i < 2; i++)
-        {
-            GeraCartas(posX, posY);
-            posY += 1;
-        }
-
-        posX = 8;
-        posY = 2;
-        for (int i = 0; i < 9; i++)
-        {
-            GeraCartas(posX, posY);
-            posX -= 1;
-        }
-
-        posX = 0;
-        posY = 3;
-        for (int i = 0; i < 2; i++)
-        {
-            GeraCartas(posX, posY);
-            posY += 1;
-        }
-
-        posX = 1;
-        posY = 4;
-        for (int i = 0; i < 9; i++)
-        {
-            GeraCartas(posX, posY);
-            posX += 1;
-        }  
-    }
-
-    public void GeraCartas(int posX, int posY){
-        float[] x = {-6.3f, -4.9f, -3.5f, -2.1f, -0.7f, 0.7f, 2.1f, 3.5f, 4.9f, 6.3f};
-        float[] y = {2f, 0.5f, -1f, -2.5f, -4f};
-
-        float num = Random.value;
-        Vector3 pos = new Vector3(x[posX], y[posY], 0f);
-        if(num < 0.2){
-            Instantiate(FlorestaPrefab, pos, Quaternion.identity);
-            GameManager.mapCards.Add(FlorestaPrefab);
-        }
-        else if(num < 0.4){
-            Instantiate(CidadePrefab, pos, Quaternion.identity);
-            GameManager.mapCards.Add(CidadePrefab);
-        }
-        else if(num <0.6){
-            Instantiate(DesertoPrefab, pos, Quaternion.identity);
-            GameManager.mapCards.Add(DesertoPrefab);
-        }
-        else if(num < 0.8){
-            Instantiate(NevadoPrefab, pos, Quaternion.identity);
-            GameManager.mapCards.Add(NevadoPrefab);
-        }
-        else if(num <= 1){
-            Instantiate(VulcaoPrefab, pos, Quaternion.identity);
-            GameManager.mapCards.Add(VulcaoPrefab);
-        }   
     }
 
     public void MostraMapa(){
@@ -133,17 +86,13 @@ public class Map : MonoBehaviour
         float[] x = {-6.3f, -4.9f, -3.5f, -2.1f, -0.7f, 0.7f, 2.1f, 3.5f, 4.9f, 6.3f};
         float[] y = {2f, 0.5f, -1f, -2.5f, -4f};
 
-        Instantiate(prefab, new Vector3(x[posX], y[posY], 0f), Quaternion.identity);
+        var image = Instantiate(prefab, new Vector3(x[posX], y[posY], 0f), Quaternion.identity);
+        image.transform.localScale -= new Vector3(1, 1, 1);
     }
 
     void Awake()
     {
-        if(GameManager.mapCards.Count == 0){
-            IniciaMapa();
-        }
-        else{
-            MostraMapa();
-        }
+        MostraMapa();
     }
 
     // Start is called before the first frame update
