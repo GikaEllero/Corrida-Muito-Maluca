@@ -6,10 +6,18 @@ using UnityEngine.SceneManagement;
 public class Buttons : MonoBehaviour
 {
     public void SkillClick(){
+        foreach (var item in GameManager.playerCards)
+        {
+            item.card.SetActive(false);
+        }
         SceneManager.LoadScene("Skills");
     }
 
     public void MapClick(){
+        foreach (var item in GameManager.playerCards)
+        {
+            item.card.SetActive(false);
+        }
         SceneManager.LoadScene("Mapa");
     }
 

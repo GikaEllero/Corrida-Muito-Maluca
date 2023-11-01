@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
-    public static GameObject FlorestaPrefab = (GameObject)Resources.Load("Prefab/CardFloresta", typeof(GameObject));
-    public static GameObject CidadePrefab = (GameObject)Resources.Load("Prefab/CardCidade", typeof(GameObject));
-    public static GameObject DesertoPrefab = (GameObject)Resources.Load("Prefab/CardDeserto", typeof(GameObject));
-    public static GameObject NevadoPrefab = (GameObject)Resources.Load("Prefab/CardNevado", typeof(GameObject));
-    public static GameObject VulcaoPrefab = (GameObject)Resources.Load("Prefab/CardVulcao", typeof(GameObject));
+    public static GameObject FlorestaPrefab = Resources.Load<GameObject>("Prefab/CardFloresta");
+    public static GameObject CidadePrefab = Resources.Load<GameObject>("Prefab/CardCidade");
+    public static GameObject DesertoPrefab = Resources.Load<GameObject>("Prefab/CardDeserto");
+    public static GameObject NevadoPrefab = Resources.Load<GameObject>("Prefab/CardNevado");
+    public static GameObject VulcaoPrefab = Resources.Load<GameObject>("Prefab/CardVulcao");
 
     public static void IniciaMapa(){
 
@@ -92,13 +92,14 @@ public class Map : MonoBehaviour
 
     void Awake()
     {
-        MostraMapa();
+        if(GameManager.mapCards.Count > 0)
+            MostraMapa();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame

@@ -524,11 +524,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04fff6a1d86708479c8a9abcd862c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlorestaPrefab: {fileID: 8045355485490212029, guid: 87e885853f60d414e9123cec82e998af, type: 3}
-  CidadePrefab: {fileID: 6206820288813340876, guid: 685c165260404df479fab5621f41fa07, type: 3}
-  DesertoPrefab: {fileID: 9065508505531912386, guid: fc2172bd3ce476847a13db50ec690f97, type: 3}
-  NevadoPrefab: {fileID: 4020881988316227466, guid: e7d8bb9ffba3933488e4291dc0fb2f9c, type: 3}
-  VulcaoPrefab: {fileID: 8744314235197506778, guid: 512e4b5f493d55f4c85e49ea4848cea1, type: 3}
 --- !u!4 &1011175963
 Transform:
   m_ObjectHideFlags: 0
