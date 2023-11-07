@@ -11,21 +11,22 @@ public class GameManager : MonoBehaviour
     private static Cards cards;
     private static TextUpdate text;
     public static List<(int idx, GameObject card)> playerCards = new List<(int, GameObject)>();
-    public static List<GameObject> mapCards = new List<GameObject>();
-    public static List<int> freeIdx = new List<int>(); 
+    public static List<(int idx, GameObject card)> mapCards = new List<(int, GameObject)>();
+    public static List<int> freeIdxCards = new List<int>(); 
+    public static List<Npc> npcs = new List<Npc>(); 
     public static int atualPlayer = 0;
     private static bool firstCard = true;
 
     public static GameObject AtualMapa(){
-        return mapCards[atualPlayer];
+        return mapCards[atualPlayer].card;
     }
 
     public static void FinalizarTurno(){
         text.Clear();
         if(playerCards.Count < 3){
-            foreach (var item in freeIdx.ToList())
+            foreach (var item in freeIdxCards.ToList())
             {
-                freeIdx.Remove(item);
+                freeIdxCards.Remove(item);
                 switch (item)
                 {
                     case 1:
@@ -45,26 +46,38 @@ public class GameManager : MonoBehaviour
         Background.AtualizaBackground();
     }
 
+    public static void Avanca(){
+        bool certo = false;
+
+        while(!certo){
+            atualPlayer++;
+            if(npcs.Where(w => w.idx == atualPlayer).Count() <= 1){
+                certo = true;
+            }
+        }
+        
+    }
+
     public static void SelecionarCarta(){
         var cardIdx = GetCardSelected();
         text.Clear();
         if(cardIdx != null){
             if(firstCard){
-                freeIdx.Add((int)cardIdx);
+                freeIdxCards.Add((int)cardIdx);
                 var card = playerCards.Where(w => w.idx == cardIdx).FirstOrDefault();
                 Destroy(card.card);
                 playerCards.Remove(card);
                 firstCard = false;
-                atualPlayer++;
+                Avanca();
                 Background.AtualizaBackground();
             }
             else{
                 var card = playerCards.Where(w => w.idx == cardIdx).FirstOrDefault();
-                if(card.card.name.Contains(mapCards[atualPlayer].name)){
-                    freeIdx.Add((int)cardIdx);
+                if(card.card.name.Contains(mapCards[atualPlayer].card.name)){
+                    freeIdxCards.Add((int)cardIdx);
                     Destroy(card.card);
                     playerCards.Remove(card);
-                    atualPlayer++;
+                    Avanca();
                     Background.AtualizaBackground();
                 }
                 else{
@@ -93,6 +106,7 @@ public class GameManager : MonoBehaviour
         if(mapCards.Count == 0){
             Map.IniciaMapa();
         }
+        
         cards = GameObject.Find("Cards").GetComponent<Cards>();
         text = GameObject.Find("Text").GetComponent<TextUpdate>();
     }
