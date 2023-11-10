@@ -10,6 +10,10 @@ public class TextUpdate : MonoBehaviour
         text.text = "A carta escolhida tem \nque estar de acordo \ncom o terreno";
     }
 
+    public void TurnError(){
+        text.text = "Você deve jogar \n uma carta antes \nde finalizar o turno";
+    }
+
     public void Clear(){
         text.text = "";
     }

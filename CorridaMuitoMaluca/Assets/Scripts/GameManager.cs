@@ -1,10 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,32 +21,62 @@ public class GameManager : MonoBehaviour
         return mapCards[atualPlayer].card;
     }
 
-    public static void FinalizarTurno(){
-        text.Clear();
-        if(playerCards.Count < 3){
-            foreach (var item in freeIdxCards.ToList())
-            {
-                freeIdxCards.Remove(item);
-                switch (item)
-                {
-                    case 1:
-                        cards.GeraCarta(-3.8f, -4.7f, 1);
-                        break;
-                    case 2:
-                        cards.GeraCarta(-0.5f, -4.7f, 2);
-                        break;
-                    case 3:
-                        cards.GeraCarta(2.8f, -4.7f, 3);
-                        break;
-                }
-            }
+    public void MovimentaNpcs(){
+        for (int i = 0; i < npcs.Count; i++)
+        {
+            AvancaNpc(i);
         }
 
-        firstCard = true;
-        Background.AtualizaBackground();
+        for (int i = 0; i < 2; i++)
+        {
+            var card = cards.TiraCarta();
+            Debug.Log(card);
+
+            for (int j = 0; j < npcs.Count; j++)
+            {
+                var npc = npcs[j];
+                if(card.Contains(mapCards[npc.idx].card.name)){
+                    AvancaNpc(j);
+                }
+                    
+            }
+        }
     }
 
-    public static void Avanca(){
+    public void FinalizarTurno(){
+        text.Clear();
+        if(!firstCard){
+            if(playerCards.Count < 3){
+                foreach (var item in freeIdxCards.ToList())
+                {
+                    freeIdxCards.Remove(item);
+                    switch (item)
+                    {
+                        case 1:
+                            cards.GeraCarta(-3.8f, -4.7f, 1);
+                            break;
+                        case 2:
+                            cards.GeraCarta(-0.5f, -4.7f, 2);
+                            break;
+                        case 3:
+                            cards.GeraCarta(2.8f, -4.7f, 3);
+                            break;
+                    }
+                }
+            }
+
+            firstCard = true;
+            Background.AtualizaBackground();
+            Buttons.MapClick();
+            MovimentaNpcs();
+        }
+        else{
+            text.TurnError();
+        }
+        
+    }
+
+    public void AvancaPlayer(){
         bool certo = false;
 
         while(!certo){
@@ -58,7 +88,19 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public static void SelecionarCarta(){
+    public void AvancaNpc(int idx){
+        bool certo = false;
+
+        while(!certo){
+            npcs[idx].idx++;
+            if((atualPlayer != npcs[idx].idx && npcs.Where(w => w.idx == npcs[idx].idx).Count() <= 2) || 
+                (atualPlayer == npcs[idx].idx && npcs.Where(w => w.idx == npcs[idx].idx).Count() <= 1)){
+                certo = true;
+            }
+        }
+    }
+
+    public void SelecionarCarta(){
         var cardIdx = GetCardSelected();
         text.Clear();
         if(cardIdx != null){
@@ -68,7 +110,7 @@ public class GameManager : MonoBehaviour
                 Destroy(card.card);
                 playerCards.Remove(card);
                 firstCard = false;
-                Avanca();
+                AvancaPlayer();
                 Background.AtualizaBackground();
             }
             else{
@@ -77,7 +119,7 @@ public class GameManager : MonoBehaviour
                     freeIdxCards.Add((int)cardIdx);
                     Destroy(card.card);
                     playerCards.Remove(card);
-                    Avanca();
+                    AvancaPlayer();
                     Background.AtualizaBackground();
                 }
                 else{
@@ -107,13 +149,15 @@ public class GameManager : MonoBehaviour
             Map.IniciaMapa();
         }
         
-        cards = GameObject.Find("Cards").GetComponent<Cards>();
-        text = GameObject.Find("Text").GetComponent<TextUpdate>();
+        if(SceneManager.GetActiveScene().name == "Inicio"){
+            cards = GameObject.Find("Cards").GetComponent<Cards>();
+            text = GameObject.Find("Text").GetComponent<TextUpdate>();
+        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

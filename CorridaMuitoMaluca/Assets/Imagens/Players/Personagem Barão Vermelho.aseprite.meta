@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 666346bba6938a04b84b860b7063a0c7
+guid: 6d616d503dd7b764194b7153377156ba
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638330601246074762
+  platformSettingsDirtyTick: 0
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Imagem_Floresta_Frame_0
+  - name: "Personagem Bar\xE3o Vermelho_Frame_0"
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.4947917, y: -0.09375}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 128
-      height: 128
-    spriteID: e7a2d808ebb0d6945a8e2b443d104c57
+      width: 192
+      height: 160
+    spriteID: 37409ee885cb630459ae648a7ab8fda8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -139,18 +139,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Imagem_Floresta_Frame_1
+  - name: "Personagem Bar\xE3o Vermelho_Frame_1"
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.4947917, y: -0.09375}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 140
-      width: 128
-      height: 128
-    spriteID: a472bb49bb0504d4f91605007af4b868
+      y: 172
+      width: 192
+      height: 160
+    spriteID: f0f6598158bac734399b170a9a5f6e41
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -158,68 +158,35 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 140}
+    uvTransform: {x: 4, y: 172}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 291977913
-    name: Imagem_Floresta
+    guid: -203527998
+    name: "Personagem Bar\xE3o Vermelho"
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Imagem_Floresta_Frame_0
+    - name: "Personagem Bar\xE3o Vermelho_Frame_0"
       frameIndex: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 128
-        height: 128
-      spriteId: e7a2d808ebb0d6945a8e2b443d104c57
-    - name: Imagem_Floresta_Frame_1
+        x: 3
+        y: 15
+        width: 192
+        height: 160
+      spriteId: 37409ee885cb630459ae648a7ab8fda8
+    - name: "Personagem Bar\xE3o Vermelho_Frame_1"
       frameIndex: 1
       cellRect:
-        x: 0
-        y: 0
-        width: 128
-        height: 128
-      spriteId: a472bb49bb0504d4f91605007af4b868
+        x: 3
+        y: 15
+        width: 192
+        height: 160
+      spriteId: f0f6598158bac734399b170a9a5f6e41
     linkedCells: []
     parentIndex: -1
-  platformSettings:
-  - name: DefaultTexturePlatform
-    overridden: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Standalone
-    overridden: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Server
-    overridden: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
+  platformSettings: []
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 128, y: 128}
+  canvasSize: {x: 196, y: 186}

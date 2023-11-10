@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using TreeEditor;
 using UnityEditor;
 using UnityEngine;
@@ -26,7 +27,7 @@ public class Cards : MonoBehaviour
             DontDestroyOnLoad(card);
             GameManager.playerCards.Add((idx, card));
         }
-        else if(num <0.6){
+        else if(num < 0.6){
             var card = Instantiate(DesertoPrefab, pos, Quaternion.identity);
             DontDestroyOnLoad(card);
             GameManager.playerCards.Add((idx, card));
@@ -41,6 +42,26 @@ public class Cards : MonoBehaviour
             DontDestroyOnLoad(card);
             GameManager.playerCards.Add((idx, card));
         }
+    }
+
+    public string TiraCarta(){
+        float num = UnityEngine.Random.value;
+        if(num < 0.2){
+            return FlorestaPrefab.name;
+        }
+        else if(num < 0.4){
+            return CidadePrefab.name;
+        }
+        else if(num < 0.6){
+            return DesertoPrefab.name;
+        }
+        else if(num < 0.8){
+            return NevadoPrefab.name;
+        }
+        else if(num <= 1){
+            return VulcaoPrefab.name;
+        }
+        return "";
     }
 
     public void PosicionaCarta(GameObject prefab, Vector3 pos){

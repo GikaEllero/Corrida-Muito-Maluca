@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
+    private GameManager gameManager = new GameManager();
+
     public void SkillClick(){
         foreach (var item in GameManager.playerCards)
         {
@@ -13,7 +15,7 @@ public class Buttons : MonoBehaviour
         SceneManager.LoadScene("Skills");
     }
 
-    public void MapClick(){
+    public static void MapClick(){
         foreach (var item in GameManager.playerCards)
         {
             item.card.SetActive(false);
@@ -30,10 +32,10 @@ public class Buttons : MonoBehaviour
     }
 
     public void SelecionaClick(){
-        GameManager.SelecionarCarta();
+        gameManager.SelecionarCarta();
     }
 
     public void TurnoClick(){
-        GameManager.FinalizarTurno();
+        gameManager.FinalizarTurno();
     }
 }
