@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Personagem Quadrilha da Morte
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 866981254a119804db117ff1cf068232, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 866981254a119804db117ff1cf068232, type: 3}
       propertyPath: m_SortingOrder
       value: 5

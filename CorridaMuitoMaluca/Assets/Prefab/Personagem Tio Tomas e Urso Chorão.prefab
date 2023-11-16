@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Personagem Tio Tomas e Urso Chor\xE3o"
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: ee6ba2d8c5fcb134084130a28f638382, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: ee6ba2d8c5fcb134084130a28f638382, type: 3}
       propertyPath: m_SortingOrder
       value: 5

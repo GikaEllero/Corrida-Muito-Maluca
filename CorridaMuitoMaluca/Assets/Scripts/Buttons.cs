@@ -24,7 +24,7 @@ public class Buttons : MonoBehaviour
     }
 
     public void StartClick(){
-        SceneManager.LoadScene("Inicio");
+        SceneManager.LoadScene("Historia");
     }
 
     public void BackClick(){
@@ -37,5 +37,34 @@ public class Buttons : MonoBehaviour
 
     public void TurnoClick(){
         gameManager.FinalizarTurno();
+    }
+
+    public void InicarJogo(){
+        if(gameManager.VerificaHabilidades())
+            SceneManager.LoadScene("Inicio");
+    }
+
+    public void SelecionaHabilidades(){
+        SceneManager.LoadScene("SelecionaHabilidades");
+    }
+
+    public void QuitGame(){
+        Application.Quit();
+    }
+
+    public void Restart(){
+    }
+
+    public void UseSkill(){
+        foreach (var item in GameManager.skills)
+        {
+            if(item.GetSelected()){
+                if(!item.used){
+                    Habilidades.UsaHabilidade(item);
+                    SceneManager.LoadScene("Mapa");
+                    break;
+                }
+            }
+        }
     }
 }

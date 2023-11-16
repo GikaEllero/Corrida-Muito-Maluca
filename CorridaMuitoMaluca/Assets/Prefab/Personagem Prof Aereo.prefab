@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Personagem Prof Aereo
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 7bd3153fbc5a2844e8a6a0609396d915, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 7bd3153fbc5a2844e8a6a0609396d915, type: 3}
       propertyPath: m_SortingOrder
       value: 5

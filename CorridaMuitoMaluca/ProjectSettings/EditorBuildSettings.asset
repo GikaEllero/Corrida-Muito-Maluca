@@ -17,4 +17,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Skills.unity
     guid: aa8825de0d7f5dc47bc4e4736772bb0e
+  - enabled: 1
+    path: Assets/Scenes/Armadilha.unity
+    guid: 774d6b8699d50674d91e9ed289032af3
+  - enabled: 1
+    path: Assets/Scenes/Ganhou.unity
+    guid: 79eee936fe0ea844b85b6dd8c4e0cce1
+  - enabled: 1
+    path: Assets/Scenes/Perdeu.unity
+    guid: dc626a1ff9b34f3409102c66f722f5af
+  - enabled: 1
+    path: Assets/Scenes/SelecionaHabilidades.unity
+    guid: 21ff28045a39f954ca0894342da28a97
+  - enabled: 1
+    path: Assets/Scenes/Historia.unity
+    guid: a3555f44bee16f54293e79f5e793e02f
   m_configObjects: {}
